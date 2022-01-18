@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+{%extends 'academy/base.html'%}
+ {%block body_block%}
+<div class="container">
+    <div class="row">
+
+    <div class="col-12">
+ <table class="table">
+               <h1>My worknotes</h1>
+               <tr>
+
+                    <td>Topic</td>
+                   <td>WorkNotes</td>
+                   <td>Image</td>
+                   <td>date</td>
+
+                   <td>Action</td>
+
+               </tr>
+               {%for note in notes%}
+               <tr>
+                   <td>{{note.title}}</td>
+                 <td>{{note.notes}}</td>
+                   <td>
+                    <img src="{{note.notes_image.url}}" class="card-img-top img-responsive" alt="..." style="height:100px" width="30" >
+
+                   </td>
+                          <td>{{note.posted_date}}</td>
+
+                   <td >
+<a href="{%url 'editworknotes' note.id %}" class="btn btn-primary">EDIT</a></td>
+                       <td><a href="{%url 'removeworknotes' note.id %}" class="btn btn-danger"
+                      >DELETE</a></td>
+
+               </tr>
+                   {%endfor%}
+           </table>
+    </div>
+
+    </div></div>
+
+{%endblock%}
